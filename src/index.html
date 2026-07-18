@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DST Foods</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo">🍔 DST Foods</div>
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Fresh. Fast. Delicious.</h1>
+    <p>Order now and get it delivered to your door</p>
+  </section>
+
+  <section class="menu" id="menu">
+    <h2>Our Menu</h2>
+    <div class="grid" id="product-grid"></div>
+  </section>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+    <button class="btn-primary" onclick="goToCheckout()">Checkout</button>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkout-modal">
+    <div class="modal-content">
+      <h2>Checkout</h2>
+      <form id="checkout-form">
+        <label>Delivery Address</label>
+        <input type="text" id="address" placeholder="123 Main St, City" required/>
+
+        <label>Phone Number</label>
+        <div class="phone-row">
+          <select id="country-code">
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+33">🇫🇷 +33</option>
+            <option value="+1-CA">🇨🇦 +1</option>
+            <option value="+971">🇦🇪 +971</option>
+            <option value="+213">🇩🇿 +213</option>
+          </select>
+          <input type="tel" id="phone" placeholder="Phone number" required/>
+        </div>
+        <button type="button" class="btn-secondary" onclick="sendOTP()">Send Verification Code</button>
+        <input type="text" id="otp" placeholder="Enter 6-digit code" maxlength="6"/>
+
+        <label>Card Number</label>
+        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19"/>
+
+        <div class="card-row">
+          <div>
+            <label>Expiry</label>
+            <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5"/>
+          </div>
+          <div>
+            <label>CVV</label>
+            <input type="text" id="card-cvv" placeholder="123" maxlength="3"/>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
